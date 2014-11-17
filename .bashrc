@@ -1,7 +1,3 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
-
 # Source global definitions
 if [ -f /etc/bash.bashrc ]; then
         . /etc/bash.bashrc
@@ -31,13 +27,8 @@ HISTFILESIZE=6000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-#shopt -s globstar
-
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -61,9 +52,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
-
-# mint-fortune
-# /usr/bin/mint-fortune
 
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
