@@ -17,7 +17,7 @@
 #define S_base2 #eee8d5
 #define S_base3 #fdf6e3
 
-! URxvt*termName:                       string
+URxvt*termName:                     xterm
 ! URxvt*geometry:                       geometry
 ! URxvt*chdir:                          string
 ! URxvt*reverseVideo:                   boolean
@@ -42,15 +42,15 @@ URxvt*scrollBar:                      false
 URxvt*fading:                         40
 URxvt*fadeColor:                      S_base03
 ! URxvt*utmpInhibit:                    boolean
-! URxvt*urgentOnBell:                   boolean
-! URxvt*visualBell:                     boolean
+URxvt*urgentOnBell:                   true
+! URxvt*visualBell:                     true
 ! URxvt*mapAlert:                       boolean
 ! URxvt*meta8:                          boolean
 ! URxvt*mouseWheelScrollPage:           boolean
 ! URxvt*tripleclickwords:               boolean
 ! URxvt*insecure:                       boolean
-! URxvt*cursorUnderline:                boolean
-! URxvt*cursorBlink:                    boolean
+URxvt*cursorUnderline:                true
+URxvt*cursorBlink:                    true
 ! URxvt*pointerBlank:                   boolean
 URxvt*background:                     S_base03
 URxvt*foreground:                     S_base0
@@ -63,10 +63,10 @@ URxvt*color5:                         S_magenta
 URxvt*color6:                         S_cyan
 URxvt*color7:                         S_base2
 URxvt*color8:                         S_orange
-URxvt*color9:                         S_base03
+URxvt*color9:                         S_orange
 URxvt*color10:                        S_base01
 URxvt*color11:                        S_base00
-URxvt*color12:                        S_base0
+URxvt*color12:                        S_blue
 URxvt*color13:                        S_violet
 URxvt*color14:                        S_base1
 URxvt*color15:                        S_base3
@@ -89,9 +89,9 @@ URxvt*cursorColor:                    S_base1
 ! URxvt*iconFile:                       file
 URxvt*font:                           -*-terminus-medium-*-*-*-*-140-*-*-*-*-iso8859-1 
 URxvt*boldFont:                       -*-terminus-medium-*-*-*-*-140-*-*-*-*-iso8859-1
-! URxvt*italicFont:                     fontname
-! URxvt*boldItalicFont:                 fontname
-! URxvt*intensityStyles:                boolean
+URxvt*italicFont:                     -*-terminus-medium-*-*-*-*-140-*-*-*-*-iso8859-1
+URxvt*boldItalicFont:                 -*-terminus-medium-*-*-*-*-140-*-*-*-*-iso8859-1
+URxvt*intensityStyles:                false 
 ! URxvt*inputMethod:                    name
 ! URxvt*preeditType:                    style
 ! URxvt*imLocale:                       string
