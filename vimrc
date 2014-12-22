@@ -29,3 +29,7 @@ nnoremap m q
 nnoremap q <NOP>
 set number
 nnoremap <F2> :set nonumber!<CR>
+set cursorline
+hi CursorLine   cterm=NONE ctermbg=darkgrey ctermfg=NONE
+hi LineNr ctermfg=black
+hi CursorLineNr ctermfg=green
