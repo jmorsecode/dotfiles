@@ -17,7 +17,7 @@
 #define S_base2 #eee8d5
 #define S_base3 #fdf6e3
 
-URxvt*termName:                     xterm
+URxvt*termName:                     xterm-256color
 ! URxvt*geometry:                       geometry
 ! URxvt*chdir:                          string
 ! URxvt*reverseVideo:                   boolean
@@ -149,3 +149,12 @@ URxvt*intensityStyles:                false
 ! URxvt*tabbar-bg:                      colour
 ! URxvt*tabbar-fg:                      colour
 ! URxvt*url-launcher:                   string
+!
+
+Xft.lcdfilter: lcddefault
+Xft.antialias: true
+Xft.autohint: 0
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.rgba: rgb
+Xft.dpi: 96
