@@ -13,7 +13,8 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
-font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+font -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-*
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
@@ -23,13 +24,23 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# Keepass2 floating
+for_window [class="KeePass2"] floating enable
+
+## STARTUP ##
+# Dual monitor fix
+exec --no-startup-id "xrandr --output HDMI1 --mode 1280x1024 --right-of VGA1"
+
 # Set random wallpaper
 exec --no-startup-id "feh --recursive --randomize --bg-scale ~/Pictures/wallpaps"
 
 # auto sync clipboard and urxvt/xterm type selections
-
 exec --no-startup-id "autocutsel -f"
 exec --no-startup-id "autocutsel -f -s PRIMARY"
+## END STARTUP ##
+
+# Randomize wallpaper shortcut
+bindsym $mod+Shift+w exec --no-startup-id "feh --recursive --randomize --bg-scale ~/Pictures/wallpaps"
 
 # start a terminal
 bindsym $mod+Return exec urxvt
@@ -99,8 +110,8 @@ bindsym $mod+a focus parent
 
 # switch to workspace
 bindsym $mod+1 workspace number 1
-bindsym $mod+2 workspace number 2
-bindsym $mod+3 workspace number 3
+bindsym $mod+2 workspace 2: 
+bindsym $mod+3 workspace 3: 
 bindsym $mod+4 workspace number 4
 bindsym $mod+5 workspace number 5
 bindsym $mod+6 workspace number 6
@@ -108,11 +119,12 @@ bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
+bindsym $mod+Tab workspace back_and_forth
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+1 move container to workspace 1: 
+bindsym $mod+Shift+2 move container to workspace 2: 
+bindsym $mod+Shift+3 move container to workspace 3: 
 bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
@@ -126,7 +138,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3? (ending your X session).' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -157,6 +169,14 @@ bindsym $mod+r mode "resize"
 # lock screen
 bindsym $mod+i exec "~/.i3/blur-lock.sh"
 
+set $ws3 "3:&#xf269;"
+set $ws2 "2:&#xf120;"
+set $ws1 "1:&#xf17a;"
+
+workspace $ws1 output HDMI1
+workspace $ws2 output VGA1
+workspace $ws3 output VGA1
+
 # solarized accents
 set $yellow #b58900
 set $orange #cb4b16
@@ -176,27 +196,33 @@ set $baseB1 #93a1a1
 set $baseB2 #eee8d5
 set $baseB3 #fdf6e3
 set $custom #1c5766
+set $drkgrey #303233
+set $ngrey #333233
+
 # solarized (borders)
 # clientclass border backgr. text indicator
-client.focused $baseB0 $baseA2 $baseB3 $blue
+client.focused $drkgrey $drkgrey $baseB3 $baseB1
 # client.focused_inactive $baseB0 $cyan $baseB2 $violet
-client.focused_inactive $baseB0 $baseA2 $baseB1 $baseA1
-client.unfocused $baseB0 $baseA2 $baseB1 $baseA1
+client.focused_inactive $baseA2 $baseA2 $baseB1 $baseA1
+client.unfocused $baseA2 $baseA2 $baseB1 $baseA1
 client.urgent $baseB0 $yellow $baseB3 $orange
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# Start i3bar to display a workspace bar (plus system info i3status finds, if available)
 bar {
-        status_command i3status
+       #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+        font pango:Terminus, Awesome 10
+        status_command py3status -c ~/.i3/i3status.conf -n 5
+        #status_command i3status
 	colors {
            # status
-	   background #073642
+	   #background #073642
+	   background $drkgrey
 	   statusline #268bd2
-           separator $blue
+           separator #303233
            # borders
-           focused_workspace $baseB0 $green $baseA3
-           active_workspace $baseB0 $cyan $baseA2
-           inactive_workspace $baseB0 $baseA2 $baseB1
+           focused_workspace $baseB0 $baseB0 $baseA2
+           active_workspace $baseB0 $blue $baseA2
+           inactive_workspace $baseB0 $drkgrey $baseB1
            urgent_workspace $baseB0 $orange $baseB3
      }
 }
