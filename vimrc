@@ -10,6 +10,7 @@ Plugin 'raimondi/delimitmate'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'osyo-manga/vim-over'
+Plugin 'alessandroyorba/alduin'
 Bundle 'pearofducks/ansible-vim'
 "Plugin 'benekastah/neomake'
 "Plugin 'haya14busa/incsearch.vim'
@@ -40,5 +41,7 @@ hi LineNr ctermfg=black
 hi CursorLineNr ctermfg=black
 
 let python_highlight_all = 1
-let g:alduin_Shout_Windhelm = 1
+"let g:alduin_Shout_Windhelm = 1
+let g:alduin_Shout_Aura_Whisper = 1
+
 syntax on
