@@ -24,6 +24,9 @@ font -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-*
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# hide edge borders
+hide_edge_borders horizontal
+
 # Keepass2 floating
 for_window [class="KeePass2"] floating enable
 
@@ -52,7 +55,8 @@ bindsym $mod+Shift+q kill
 bindsym $mod+n exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+#bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec --no-startup-id "rofi -i -show run -lines 6"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -108,10 +112,14 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+set $ws3 "3: &#xf269;"
+set $ws2 "2: &#xf120;"
+set $ws1 "1: &#xf17a;"
+
 # switch to workspace
-bindsym $mod+1 workspace 1: 
-bindsym $mod+2 workspace 2: 
-bindsym $mod+3 workspace 3: 
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace 4: 
 bindsym $mod+5 workspace number 5
 bindsym $mod+6 workspace number 6
@@ -122,9 +130,9 @@ bindsym $mod+0 workspace number 10
 bindsym $mod+Tab workspace back_and_forth
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1: 
-bindsym $mod+Shift+2 move container to workspace 2: 
-bindsym $mod+Shift+3 move container to workspace 3: 
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
 bindsym $mod+Shift+4 move container to workspace 4: 
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
@@ -169,13 +177,12 @@ bindsym $mod+r mode "resize"
 # lock screen
 bindsym $mod+i exec "~/.i3/blur-lock.sh"
 
-set $ws3 "3:&#xf269;"
-set $ws2 "2:&#xf120;"
-set $ws1 "1:&#xf17a;"
 
 workspace $ws1 output HDMI1
 workspace $ws2 output VGA1
 workspace $ws3 output VGA1
+
+assign [class="Firefox"] $ws3
 
 # solarized accents
 set $yellow #b58900
@@ -199,7 +206,6 @@ set $custom #1c5766
 set $drkgrey #303233
 set $ngrey #333233
 
-# solarized (borders)
 # clientclass border backgr. text indicator
 client.focused $drkgrey $drkgrey $baseB3 $baseB1
 # client.focused_inactive $baseB0 $cyan $baseB2 $violet
@@ -210,7 +216,7 @@ client.urgent $baseB0 $yellow $baseB3 $orange
 # Start i3bar to display a workspace bar (plus system info i3status finds, if available)
 bar {
        #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-        font pango:Terminus, Awesome 10
+        font pango:Terminus , Awesome 11
         status_command py3status -c ~/.i3/i3status.conf -n 5
         #status_command i3status
 	colors {

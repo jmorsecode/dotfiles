@@ -54,7 +54,9 @@ URxvt*cursorBlink:                    true
 ! URxvt*pointerBlank:                   boolean
 !URxvt*background:                     #282828
 URxvt*background:                     #1d2021
-URxvt*foreground:                     #d2d1a6
+!URxvt*foreground:                     #d2d1a6
+URxvt*foreground:                     #c9c89c
+!URxvt*foreground:                     #b0ae5e
 URxvt*color0:                         #282828 
 URxvt*color1:                         #cc241d
 URxvt*color2:                         #98971a
@@ -159,3 +161,13 @@ Xft.hinting: true
 Xft.hintstyle: hintslight
 Xft.rgba: rgb
 Xft.dpi: 96
+
+
+! ------------------------------------------------------------------------------
+! ROFI Color theme
+! ------------------------------------------------------------------------------
+rofi.color-enabled: true
+rofi.color-window: #273238, #273238, #1e2529
+rofi.color-normal: #273238, #c1c1c1, #273238, #394249, #ffffff
+rofi.color-active: #273238, #80cbc4, #273238, #394249, #80cbc4
+rofi.color-urgent: #273238, #ff1844, #273238, #394249, #ff1844
