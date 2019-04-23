@@ -32,7 +32,7 @@ for_window [class="KeePass2"] floating enable
 
 ## STARTUP ##
 # Dual monitor fix
-exec --no-startup-id "xrandr --output HDMI1 --mode 1280x1024 --right-of VGA1"
+exec --no-startup-id "xrandr --output HDMI1 --mode 1920x1080 --left-of VGA1"
 
 # Set random wallpaper
 exec --no-startup-id "feh --recursive --randomize --bg-scale ~/Pictures/wallpaps"
@@ -40,13 +40,18 @@ exec --no-startup-id "feh --recursive --randomize --bg-scale ~/Pictures/wallpaps
 # auto sync clipboard and urxvt/xterm type selections
 exec --no-startup-id "autocutsel -f"
 exec --no-startup-id "autocutsel -f -s PRIMARY"
+
+# Silence!
+exec --no-startup-id "xset -b"
+
 ## END STARTUP ##
 
 # Randomize wallpaper shortcut
 bindsym $mod+Shift+w exec --no-startup-id "feh --recursive --randomize --bg-scale ~/Pictures/wallpaps"
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+#bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec "termite --title ''"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -178,11 +183,12 @@ bindsym $mod+r mode "resize"
 bindsym $mod+i exec "~/.i3/blur-lock.sh"
 
 
-workspace $ws1 output HDMI1
-workspace $ws2 output VGA1
-workspace $ws3 output VGA1
+workspace $ws1 output VGA1
+workspace $ws2 output HDMI1
+workspace $ws3 output HDMI1
 
 assign [class="Firefox"] $ws3
+assign [class="remmina"] $ws1
 
 # solarized accents
 set $yellow #b58900
@@ -207,17 +213,17 @@ set $drkgrey #303233
 set $ngrey #333233
 
 # clientclass border backgr. text indicator
-client.focused $drkgrey $drkgrey $baseB3 $baseB1
+client.focused $drkgrey $drkgrey $drkgrey $baseB1
 # client.focused_inactive $baseB0 $cyan $baseB2 $violet
-client.focused_inactive $ngrey $ngrey $baseB1 $baseA1
+client.focused_inactive $ngrey $ngrey $ngrey $baseA1
 client.unfocused $ngrey $ngrey $ngrey $ngrey
 client.urgent $baseB0 $yellow $baseB3 $orange
 
 # Start i3bar to display a workspace bar (plus system info i3status finds, if available)
 bar {
        #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-        font pango:Terminus , Awesome 11
-        status_command py3status -c ~/.i3/i3status.conf -n 5
+        font pango:Terminus , Awesome 10
+        status_command py3status -c ~/.i3/i3status.conf -n 10
         #status_command i3status
 	colors {
            # status
