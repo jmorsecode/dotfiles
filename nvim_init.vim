@@ -4,13 +4,14 @@ call plug#begin("~/.vim/plugged")
   "Plug 'ryanoasis/vim-devicons'
   Plug 'chriskempson/base16-vim'
   Plug 'airblade/vim-gitgutter'
-    " Better Visual Guide
+  " Better Visual Guide
   Plug 'Yggdroot/indentLine'
-  " syntax check
+  " Syntax check
   "Plug 'w0rp/ale'
   " Autocomplete
   Plug 'neoclide/coc.nvim', {'branch': 'v0.0.80'}
-  " Formater
+  " Format
+  Plug 'sbdchd/neoformat'
   "Plug 'Chiel92/vim-autoformat'
 call plug#end()"Config Section
 
