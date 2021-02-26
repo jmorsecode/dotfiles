@@ -4,9 +4,11 @@ call plug#begin("~/.vim/plugged")
   "Plug 'ryanoasis/vim-devicons'
   Plug 'chriskempson/base16-vim'
   Plug 'airblade/vim-gitgutter'
+  Plug 'hashivim/vim-terraform'
   " Better Visual Guide
   Plug 'Yggdroot/indentLine'
   " Syntax check
+  Plug 'benekastah/neomake'
   "Plug 'w0rp/ale'
   " Autocomplete
   Plug 'neoclide/coc.nvim', {'branch': 'v0.0.80'}
@@ -53,4 +55,11 @@ set tabstop=4
 set shiftwidth=4
 " vim-autoformat
 "noremap <F3> :Autoformat<CR>
+"Hot Key Maps
+nnoremap <F2> :set nonumber!<CR>
+nnoremap <F7> :setlocal nospell! spelllang=en_us<CR>
+
+"Python specific config
+let python_highlight_all = 1
+let g:neomake_python_enabled_makers = ['flake8']
 
